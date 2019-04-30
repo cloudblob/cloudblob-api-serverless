@@ -1,0 +1,17 @@
+{
+    "storage": {
+        "type": "aws"
+    },
+    "database": "example-db",
+    "namespaces": [
+        {
+            "namespace": "user",
+            "allowed_methods": ["POST", "GET"],
+            "index":{
+                "lib":  "elasticlunr",
+                "fields": ["about", "name"]
+            },
+            "ref": "_id"
+        }
+    ]
+}
