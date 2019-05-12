@@ -1,0 +1,83 @@
+# Welcome to Serverless!
+#
+# This file is the main config file for your service.
+# It's very minimal at this point and uses default values.
+# You can always add more config options for more control.
+# We've included some commented out config examples here.
+# Just uncomment any of them to get that config option.
+#
+# For full config options, check the docs:
+#    docs.serverless.com
+#
+# Happy Coding!
+
+service: cloudblob-serverless # NOTE: update this with your service name
+
+# You can pin your service to only deploy with a specific Serverless version
+# Check out our docs for more details
+# frameworkVersion: "=X.X.X"
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+
+# you can overwrite defaults here
+stage: dev
+region: us-west-2
+
+# you can define service wide environment variables here
+#  environment:
+#    variable1: value1
+
+# you can add packaging information here
+package:
+ include:
+  #  - include-me.js
+  #  - include-me-dir/**
+ exclude:
+  #  - exclude-me.js
+  #  - exclude-me-dir/**
+
+
+functions:
+  namespaces-get:
+    handler: handler.list
+    events:
+      - http:
+          path: v1/{namespace}/
+          method: get
+          cors: true
+          request:
+            parameters:
+              paths:
+                namespace: true
+
+  namespaces-post:
+    handler: handler.create
+    events:
+      - http:
+          path: v1/{namespace}
+          method: post
+          cors: true
+          request:
+            parameters:
+              paths:
+                namespace: true
+
+  documents-get:    
+    handler: handler.get
+    events:
+      - http:
+          path: v1/{namespace}/{id}
+          method: get
+          cors: true
+          request:
+            parameters:
+              paths:
+                namespace: true
+                id: true            
+    
+    
+  # authorizerFunc:
+  #   handler: auth.verify
+

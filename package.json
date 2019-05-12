@@ -1,0 +1,9 @@
+{
+  "name": "cloudblob-api-serverless",
+  "version": "1.0.0",
+  "main": "handler.js",
+  "license": "MIT",
+  "dependencies": {
+    "@cloudblob/store": "^1.0.4"
+  }
+}

@@ -1,2 +1,2 @@
 # cloudblob-api-serverless
-Serverless lightweight cloudblob-store REST API 
+Serverless lightweight cloudblob-store REST API.
